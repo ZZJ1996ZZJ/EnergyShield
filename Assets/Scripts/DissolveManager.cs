@@ -44,7 +44,6 @@ public class DissolveManager : MonoBehaviour {
         timer += Time.deltaTime;
         float t = curve.Evaluate(1 - Mathf.Clamp01(timer / duration));
         material.SetFloat("_DissolveThreshold", t);
-        Debug.Log(t);
         if (timer > duration) {
             currentAction = null;
         }

@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 267443846}
   - component: {fileID: 267443845}
   - component: {fileID: 267443848}
-  - component: {fileID: 267443849}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -207,8 +206,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 267443849}
-        m_TargetAssemblyTypeName: HideShield, Assembly-CSharp
+      - m_Target: {fileID: 267443848}
+        m_TargetAssemblyTypeName: myShield, Assembly-CSharp
         m_MethodName: StartShow
         m_Mode: 1
         m_Arguments:
@@ -258,44 +257,6 @@ CanvasRenderer:
   m_GameObject: {fileID: 267443843}
   m_CullTransparentMesh: 1
 --- !u!114 &267443848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 267443843}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd955c416be90c642a73e49c6b9b2ea0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 1
-  obj: {fileID: 1880816635}
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &267443849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -392,8 +353,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Show Shield
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 46e2634fc02c18349b7ed3d3441a955f, type: 2}
-  m_sharedMaterial: {fileID: 8613059812195038267, guid: 46e2634fc02c18349b7ed3d3441a955f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1215,7 +1176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071cf3cb86b678d46abb11d8838ffc9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionColor: {r: 7.9066987, g: 0.8660361, b: 0.62094474, a: 1}
+  interactionColor: {r: 7.9066987, g: 1.5159373, b: 0.62094474, a: 1}
 --- !u!4 &1422912505
 Transform:
   m_ObjectHideFlags: 0
@@ -1394,8 +1355,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hide Shield
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 46e2634fc02c18349b7ed3d3441a955f, type: 2}
-  m_sharedMaterial: {fileID: 8613059812195038267, guid: 46e2634fc02c18349b7ed3d3441a955f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

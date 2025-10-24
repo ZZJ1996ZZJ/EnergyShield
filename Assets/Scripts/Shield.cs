@@ -11,7 +11,12 @@ public class Shield : MonoBehaviour {
         public float timer;
     }
 
+
+
+
+
     public static Shield instance;
+
     public float interactionDuration;
     public float distortDuration;
     public float radius;
@@ -20,6 +25,7 @@ public class Shield : MonoBehaviour {
 
     private List<InteractionData> interactionDatas = new List<InteractionData>();
 
+
     Vector4[] interactionStartPosArray;
     float[] interactionInnerRadiusArray;
     float[] interactionOuterRadiusArray;
@@ -27,11 +33,11 @@ public class Shield : MonoBehaviour {
     Color[] interactionColorArray;
     float[] distortAlphaArray;
 
-    public void Awake() {
+    private void Awake() {
         instance = this;
     }
 
-    public void Start()
+    private void Start()
     {
         interactionStartPosArray = new Vector4[100];
         interactionInnerRadiusArray = new float[100];
@@ -41,8 +47,17 @@ public class Shield : MonoBehaviour {
         distortAlphaArray = new float[100];
     }
 
-    public void Update() {
-       
+    private void Update() {
+        // 使用Unity的Stack Trace工具
+        //UnityEngine.Profiling.Profiler.BeginSample("MyCodeBlock"); 
+        //Vector4[] interactionStartPosArray = new Vector4[100];
+        //float[] interactionInnerRadiusArray = new float[100];
+        //float[] interactionOuterRadiusArray = new float[100];
+        //float[] interactionAlphaArray = new float[100];
+        //Color[] interactionColorArray = new Color[100];
+        //float[] distortAlphaArray = new float[100];
+        //UnityEngine.Profiling.Profiler.EndSample();
+
         for (int i = 0; i < interactionDatas.Count; i++) {
             InteractionData interactionData = interactionDatas[i];
             if (interactionData.timer > interactionDuration && interactionData.timer > distortDuration) {

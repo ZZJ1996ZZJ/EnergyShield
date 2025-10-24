@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HideShield : MonoBehaviour
+public class myShield : MonoBehaviour
 {
     // Start is called before the first frame update
     public float duration = 1f;

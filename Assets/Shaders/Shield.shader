@@ -148,7 +148,7 @@
                 float4 finalColor = _BaseColor;
 
                 int isFrontFace = 1;
-                // 边缘光
+
                 float3 normal = normalize(i.normal);
                 float3 viewDir = normalize(_WorldSpaceCameraPos.xyz - i.worldPos);
                 float ndv = dot(normal, viewDir);
@@ -162,7 +162,10 @@
                 finalColor += _RimColor * rimIntensity;
                 finalColor.a = saturate(finalColor.a);
 
-                // 交互
+
+
+
+
                 float interactionIntensity = 0;
                 float4 interactionColor = 0;
                 float distortIntensity = 0;
@@ -182,6 +185,9 @@
                 finalColor.a = saturate(finalColor.a);
 
 
+
+
+
                 float3x3 tangentToWorld = float3x3(
                     i.tangent.x, i.normal.x, i.binormal.x,
                     i.tangent.y, i.normal.y, i.binormal.y,
@@ -193,25 +199,29 @@
                 distortNormal *= _DistortIntensity * distortIntensity * 3;
 
 
-                // 贴图
-                //float patternIntensity = texCUBE(_PatternTex, normal + distortNormal).a * isFrontFace;
-                float patternIntensity = texCUBE(_PatternTex, normal + distortNormal).a;
+
+
+
+                float patternIntensity = texCUBE(_PatternTex, normal + distortNormal).a * isFrontFace;
                 patternIntensity *= pow(abs(ndv + interactionIntensity * 2), _PatternPower);
                 finalColor += patternIntensity * _PatternColor;
                 finalColor.a = saturate(finalColor.a);
 
 
-                // 贴图流动效果
+
+
+
                 float mask = 0;
                 mask += tex2D(_Mask, i.uv * _Mask_ST.xx + _Mask_ST.zz * _Time.y).a;
                 mask += tex2D(_Mask, i.uv * _Mask_ST.yy + _Mask_ST.ww * _Time.y).a;
                 mask = saturate(mask);
                 finalColor += patternIntensity * mask * _MaskColor;
-                //finalColor += mask * _MaskColor;
                 finalColor.a = saturate(finalColor.a);
 
 
-                // 接触高亮
+
+
+
                 i.screenPos.xyz /= i.screenPos.w;
                 float2 screenUV = i.screenPos.xy;
                 screenUV = (screenUV + 1) / 2;
@@ -230,24 +240,28 @@
                 }
 
 
-                // 溶解
+
+
+
+
+
                 if(i.localPos.y > _DissolveThreshold) {
-                    // 完全溶解
                     discard;
                 }
                 else if(i.localPos.y > _DissolveThreshold - _DissolveWidth) {
-                    // 计算过渡区域的归一化系数t（0~1）：越靠近阈值t越大
-                    float t = (i.localPos.y - (_DissolveThreshold - _DissolveWidth)) / _DissolveWidth;
+                    float t = (i.localPos.y - _DissolveThreshold + _DissolveWidth) / _DissolveWidth;
                     float noise = tex2D(_Noise, i.uv * _Noise_ST.xy + _Noise_ST.zw * _Time.y).r;
-                    // 噪声混合：t越大，噪声对边缘的影响越强（边缘更破碎）
                     noise = lerp(1, noise * (1 - t), pow(t, 0.5));
-                    // 噪声阈值判断：大于0.5显示溶解颜色，否则丢弃（形成不规则边缘）
                     if(noise > 0.5) {
                         finalColor = _DissolveColor;
                     }else {
                         discard;
                     }
                 }
+
+
+
+
 
 
                 return finalColor;
